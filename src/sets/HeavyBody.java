@@ -29,4 +29,19 @@ public final class HeavyBody {
     public Set<HeavyBody> getSatellites() {
         return new HashSet<>(this.satellites);
     }
+    @Override
+    public boolean equals(Object obj) {
+    	if(this == obj) {
+    		return true;
+    	}
+    	if((obj == null)||obj.getClass() != this.getClass())
+    		return false;
+    	String objName = ((HeavyBody) obj).getName();
+    	return this.name.equals(objName);
+    }
+    @Override
+    public int hashCode() {
+    	System.out.println("hashcode called");
+    	return this.name.hashCode() + 57;//57  so it isnt a zero
+    }
 }
