@@ -10,28 +10,29 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		
-		locations.put(0, new Location(0, "quit"));
-		locations.put(1, new Location(1, "road"));
-		locations.put(2, new Location(2, "hill"));
-		locations.put(3, new Location(3, "building"));
-		locations.put(4, new Location(4, "valley"));
-		locations.put(5, new Location(5, "forest"));
-		
-		locations.get(1).addExit("W", 2);
-		locations.get(1).addExit("E", 3);
-		locations.get(1).addExit("S", 4);
-		locations.get(1).addExit("N", 5);
-		
-		locations.get(2).addExit("N", 5);
-		
-		locations.get(3).addExit("W", 1);
-		
-		locations.get(4).addExit("N", 1);
-		locations.get(4).addExit("W", 2);
-		
-		locations.get(5).addExit("S", 1);
-		locations.get(5).addExit("w", 2);
+		Map<String, Integer> tempExit = new HashMap<String, Integer>();
+		locations.put(0, new Location(0, "quit", tempExit));
+
+		tempExit = new HashMap<String, Integer>();
+		tempExit.put("W", 2);
+		tempExit.put("E", 3);
+		tempExit.put("S", 4);
+		tempExit.put("N", 5);
+		locations.put(1, new Location(1, "road", tempExit));
+		tempExit = new HashMap<String, Integer>();
+		tempExit.put("N", 5);
+		locations.put(2, new Location(2, "hill", tempExit));
+		tempExit = new HashMap<String, Integer>();
+		tempExit.put("W", 1);
+		locations.put(3, new Location(3, "building", tempExit));
+		tempExit = new HashMap<String, Integer>();
+		tempExit.put("N", 1);
+		tempExit.put("W", 2);
+		locations.put(4, new Location(4, "valley", tempExit));
+		tempExit = new HashMap<String, Integer>();
+		tempExit.put("S", 1);
+		tempExit.put("W", 2);
+		locations.put(5, new Location(5, "forest", tempExit));
 		
 		int loc =1;
 		while(true) {
